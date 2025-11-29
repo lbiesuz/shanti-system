@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # Banco de dados para o microserviço de Compras
+  mysql-compras:
+    image: mysql:8.0
+    container_name: shanti-mysql-compras
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: shanti_compras
+      MYSQL_USER: shanti
+      MYSQL_PASSWORD: shanti123
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql-compras-data:/var/lib/mysql
+    networks:
+      - shanti-network
+
+  # Banco de dados para o microserviço de Vendas
+  mysql-vendas:
+    image: mysql:8.0
+    container_name: shanti-mysql-vendas
+    environment:
+      MYSQL_ROOT_PASSWORD: root123
+      MYSQL_DATABASE: shanti_vendas
+      MYSQL_USER: shanti
+      MYSQL_PASSWORD: shanti123
+    ports:
+      - "3307:3306"
+    volumes:
+      - mysql-vendas-data:/var/lib/mysql
+    networks:
+      - shanti-network
+
+  # Interface web para gerenciar MySQL (opcional)
+  phpmyadmin:
+    image: phpmyadmin:latest
+    container_name: shanti-phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+    ports:
+      - "8080:80"
+    networks:
+      - shanti-network
+    depends_on:
+      - mysql-compras
+      - mysql-vendas
+
+volumes:
+  mysql-compras-data:
+  mysql-vendas-data:
+
+networks:
+  shanti-network:
+    driver: bridge
