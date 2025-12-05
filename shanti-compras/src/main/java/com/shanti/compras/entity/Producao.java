@@ -7,82 +7,82 @@ import java.time.LocalDate;
 @Table(name = "producoes")
 public class Producao {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
     
-    @Column(nullable = false, length = 50)
-    private String lote;
+  @Column(nullable = false, length = 50)
+  private String lote;
     
-    @Column
-    private LocalDate validadeProduto;
+  @Column
+  private LocalDate validadeProduto;
     
-    @Column(nullable = false)
-    private Integer quantidade;
+  @Column(nullable = false)
+  private Integer quantidade;
     
-    @ManyToOne
-    @JoinColumn(name = "id_insumo", nullable = false)
-    private Insumo insumo;
+  @ManyToOne
+  @JoinColumn(name = "id_insumo", nullable = false)
+  private Insumo insumo;
     
-    @Column(nullable = false)
-    private Long idProduto;  // Referência ao produto no microserviço de Vendas
+  @Column(nullable = false)
+  private Long idProduto;  // Referência ao produto no microserviço de Vendas
     
-    // Construtores
-    public Producao() {}
+  // Construtores
+  public Producao() {}
     
-    public Producao(String lote, Integer quantidade, Insumo insumo, Long idProduto) {
-        this.lote = lote;
-        this.quantidade = quantidade;
-        this.insumo = insumo;
-        this.idProduto = idProduto;
-    }
+  public Producao(String lote, Integer quantidade, Insumo insumo, Long idProduto) {
+    this.lote = lote;
+    this.quantidade = quantidade;
+    this.insumo = insumo;
+    this.idProduto = idProduto;
+  }
     
-    // Getters e Setters
-    public Long getId() {
-        return id;
-    }
+  // Getters e Setters
+  public Long getId() {
+    return id;
+  }
     
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
     
-    public String getLote() {
-        return lote;
-    }
+  public String getLote() {
+    return lote;
+  }
     
-    public void setLote(String lote) {
-        this.lote = lote;
-    }
+  public void setLote(String lote) {
+    this.lote = lote;
+  }
     
-    public LocalDate getValidadeProduto() {
-        return validadeProduto;
-    }
+  public LocalDate getValidadeProduto() {
+    return validadeProduto;
+  }
     
-    public void setValidadeProduto(LocalDate validadeProduto) {
-        this.validadeProduto = validadeProduto;
-    }
+  public void setValidadeProduto(LocalDate validadeProduto) {
+    this.validadeProduto = validadeProduto;
+  }
     
-    public Integer getQuantidade() {
-        return quantidade;
-    }
+  public Integer getQuantidade() {
+    return quantidade;
+  }
     
-    public void setQuantidade(Integer quantidade) {
-        this.quantidade = quantidade;
-    }
+  public void setQuantidade(Integer quantidade) {
+    this.quantidade = quantidade;
+  }
     
-    public Insumo getInsumo() {
-        return insumo;
-    }
+  public Insumo getInsumo() {
+    return insumo;
+  }
     
-    public void setInsumo(Insumo insumo) {
-        this.insumo = insumo;
-    }
+  public void setInsumo(Insumo insumo) {
+    this.insumo = insumo;
+  }
     
-    public Long getIdProduto() {
-        return idProduto;
-    }
+  public Long getIdProduto() {
+    return idProduto;
+  }
     
-    public void setIdProduto(Long idProduto) {
-        this.idProduto = idProduto;
-    }
+  public void setIdProduto(Long idProduto) {
+    this.idProduto = idProduto;
+  }
 }

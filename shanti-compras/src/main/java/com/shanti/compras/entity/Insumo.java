@@ -10,116 +10,116 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "insumos")
 public class Insumo {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
     
-    @Column(nullable = false, length = 200)
-    private String descricao;
+  @Column(nullable = false, length = 200)
+  private String descricao;
     
-    @Column(nullable = false)
-    private Integer estoqueInsumo = 0;
+  @Column(nullable = false)
+  private Integer estoqueInsumo = 0;
     
-    @Column(nullable = false, precision = 10, scale = 2)
-    private BigDecimal custoAtual;
+  @Column(nullable = false, precision = 10, scale = 2)
+  private BigDecimal custoAtual;
     
-    @Column(length = 13)
-    private String ean;
+  @Column(length = 13)
+  private String ean;
+   
+  @Column
+  private LocalDate validadeMenor;
     
-    @Column
-    private LocalDate validadeMenor;
+  @ManyToOne
+  @JoinColumn(name = "id_tipo", nullable = false)
+  private Tipo tipo;
     
-    @ManyToOne
-    @JoinColumn(name = "id_tipo", nullable = false)
-    private Tipo tipo;
+  @OneToMany(mappedBy = "insumo")
+  @JsonIgnore
+  private List<CompraInsumo> compraInsumos;
     
-    @OneToMany(mappedBy = "insumo")
-    @JsonIgnore
-    private List<CompraInsumo> compraInsumos;
+  @OneToMany(mappedBy = "insumo")
+  @JsonIgnore
+  private List<Producao> producoes;
     
-    @OneToMany(mappedBy = "insumo")
-    @JsonIgnore
-    private List<Producao> producoes;
+  // Construtores
+  public Insumo() {}
     
-    // Construtores
-    public Insumo() {}
+  public Insumo(String descricao, BigDecimal custoAtual, Tipo tipo) {
+    this.descricao = descricao;
+    this.custoAtual = custoAtual;
+    this.tipo = tipo;
+  }
     
-    public Insumo(String descricao, BigDecimal custoAtual, Tipo tipo) {
-        this.descricao = descricao;
-        this.custoAtual = custoAtual;
-        this.tipo = tipo;
-    }
+  // Getters e Setters
+  public Long getId() {
+    return id;
+  }
     
-    // Getters e Setters
-    public Long getId() {
-        return id;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
     
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public String getDescricao() {
+    return descricao;
+  }
     
-    public String getDescricao() {
-        return descricao;
-    }
+  public void setDescricao(String descricao) {
+    this.descricao = descricao;
+  }
     
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+  public Integer getEstoqueInsumo() {
+    return estoqueInsumo;
+  }
     
-    public Integer getEstoqueInsumo() {
-        return estoqueInsumo;
-    }
+  public void setEstoqueInsumo(Integer estoqueInsumo) {
+    this.estoqueInsumo = estoqueInsumo;
+  }
     
-    public void setEstoqueInsumo(Integer estoqueInsumo) {
-        this.estoqueInsumo = estoqueInsumo;
-    }
+  public BigDecimal getCustoAtual() {
+    return custoAtual;
+  }
     
-    public BigDecimal getCustoAtual() {
-        return custoAtual;
-    }
+  public void setCustoAtual(BigDecimal custoAtual) {
+    this.custoAtual = custoAtual;
+  }
     
-    public void setCustoAtual(BigDecimal custoAtual) {
-        this.custoAtual = custoAtual;
-    }
+  public String getEan() {
+    return ean;
+  }
     
-    public String getEan() {
-        return ean;
-    }
+  public void setEan(String ean) {
+    this.ean = ean;
+  }
     
-    public void setEan(String ean) {
-        this.ean = ean;
-    }
+  public LocalDate getValidadeMenor() {
+    return validadeMenor;
+  }
     
-    public LocalDate getValidadeMenor() {
-        return validadeMenor;
-    }
+  public void setValidadeMenor(LocalDate validadeMenor) {
+    this.validadeMenor = validadeMenor;
+  }
     
-    public void setValidadeMenor(LocalDate validadeMenor) {
-        this.validadeMenor = validadeMenor;
-    }
+  public Tipo getTipo() {
+    return tipo;
+  }
     
-    public Tipo getTipo() {
-        return tipo;
-    }
+  public void setTipo(Tipo tipo) {
+    this.tipo = tipo;
+  }
     
-    public void setTipo(Tipo tipo) {
-        this.tipo = tipo;
-    }
+  public List<CompraInsumo> getCompraInsumos() {
+    return compraInsumos;
+  }
     
-    public List<CompraInsumo> getCompraInsumos() {
-        return compraInsumos;
-    }
+  public void setCompraInsumos(List<CompraInsumo> compraInsumos) {
+    this.compraInsumos = compraInsumos;
+  }
     
-    public void setCompraInsumos(List<CompraInsumo> compraInsumos) {
-        this.compraInsumos = compraInsumos;
-    }
+  public List<Producao> getProducoes() {
+    return producoes;
+  }
     
-    public List<Producao> getProducoes() {
-        return producoes;
-    }
-    
-    public void setProducoes(List<Producao> producoes) {
-        this.producoes = producoes;
-    }
+  public void setProducoes(List<Producao> producoes) {
+    this.producoes = producoes;
+  }
 }

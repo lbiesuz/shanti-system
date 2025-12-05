@@ -8,113 +8,113 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 @Table(name = "fornecedores")
 public class Fornecedor {
     
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+  @Id
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  private Long id;
     
-    @Column(length = 15)
-    private String telefone;
+  @Column(length = 15)
+  private String telefone;
     
-    @Column(length = 100)
-    private String email;
+  @Column(length = 100)
+  private String email;
     
-    @Column(length = 200)
-    private String endereco;
+  @Column(length = 200)
+  private String endereco;
     
-    @Column(length = 14, unique = true)
-    private String cnpj;
+  @Column(length = 14, unique = true)
+  private String cnpj;
     
-    @Column(length = 200)
-    private String razaoSocial;
+  @Column(length = 200)
+  private String razaoSocial;
+   
+  @Column(length = 100)
+  private String contato;
+   
+  @Column(length = 200)
+  private String nomeFantasia;
+   
+  @OneToMany(mappedBy = "fornecedor")
+  @JsonIgnore
+  private List<Compra> compras;
     
-    @Column(length = 100)
-    private String contato;
+  // Construtores
+  public Fornecedor() {}
     
-    @Column(length = 200)
-    private String nomeFantasia;
+  public Fornecedor(String nomeFantasia, String cnpj) {
+    this.nomeFantasia = nomeFantasia;
+    this.cnpj = cnpj;
+  }
     
-    @OneToMany(mappedBy = "fornecedor")
-    @JsonIgnore
-    private List<Compra> compras;
+  // Getters e Setters
+  public Long getId() {
+    return id;
+  }
     
-    // Construtores
-    public Fornecedor() {}
+  public void setId(Long id) {
+    this.id = id;
+  }
     
-    public Fornecedor(String nomeFantasia, String cnpj) {
-        this.nomeFantasia = nomeFantasia;
-        this.cnpj = cnpj;
-    }
+  public String getTelefone() {
+    return telefone;
+  }
     
-    // Getters e Setters
-    public Long getId() {
-        return id;
-    }
+  public void setTelefone(String telefone) {
+    this.telefone = telefone;
+  }
     
-    public void setId(Long id) {
-        this.id = id;
-    }
+  public String getEmail() {
+    return email;
+  }
     
-    public String getTelefone() {
-        return telefone;
-    }
+  public void setEmail(String email) {
+    this.email = email;
+  }
     
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
+  public String getEndereco() {
+    return endereco;
+  }
     
-    public String getEmail() {
-        return email;
-    }
+  public void setEndereco(String endereco) {
+    this.endereco = endereco;
+  }
     
-    public void setEmail(String email) {
-        this.email = email;
-    }
+  public String getCnpj() {
+    return cnpj;
+  }
     
-    public String getEndereco() {
-        return endereco;
-    }
+  public void setCnpj(String cnpj) {
+    this.cnpj = cnpj;
+  }
     
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
+  public String getRazaoSocial() {
+    return razaoSocial;
+  }
     
-    public String getCnpj() {
-        return cnpj;
-    }
+  public void setRazaoSocial(String razaoSocial) {
+    this.razaoSocial = razaoSocial;
+  }
     
-    public void setCnpj(String cnpj) {
-        this.cnpj = cnpj;
-    }
+  public String getContato() {
+    return contato;
+  }
     
-    public String getRazaoSocial() {
-        return razaoSocial;
-    }
+  public void setContato(String contato) {
+    this.contato = contato;
+  }
     
-    public void setRazaoSocial(String razaoSocial) {
-        this.razaoSocial = razaoSocial;
-    }
+  public String getNomeFantasia() {
+    return nomeFantasia;
+  }
     
-    public String getContato() {
-        return contato;
-    }
+  public void setNomeFantasia(String nomeFantasia) {
+    this.nomeFantasia = nomeFantasia;
+  }
     
-    public void setContato(String contato) {
-        this.contato = contato;
-    }
+  public List<Compra> getCompras() {
+    return compras;
+  }
     
-    public String getNomeFantasia() {
-        return nomeFantasia;
-    }
-    
-    public void setNomeFantasia(String nomeFantasia) {
-        this.nomeFantasia = nomeFantasia;
-    }
-    
-    public List<Compra> getCompras() {
-        return compras;
-    }
-    
-    public void setCompras(List<Compra> compras) {
-        this.compras = compras;
-    }
+  public void setCompras(List<Compra> compras) {
+    this.compras = compras;
+  }
 }
