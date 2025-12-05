@@ -7,7 +7,7 @@ import jakarta.enterprise.context.ApplicationScoped;
 @ApplicationScoped
 public class FornecedorRepository implements PanacheRepository<Fornecedor> {
     
-    public Fornecedor findByCnpj(String cnpj) {
-        return find("cnpj", cnpj).firstResult();
-    }
+  public Fornecedor findByCnpj(String cnpj) {
+    return find("cnpj", cnpj).firstResult();
+  }
 }

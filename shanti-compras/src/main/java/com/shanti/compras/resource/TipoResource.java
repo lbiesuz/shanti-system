@@ -13,47 +13,47 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class TipoResource {
     
-    @Inject
-    TipoService tipoService;
+  @Inject
+  TipoService tipoService;
     
-    @GET
-    public List<Tipo> listar() {
-        return tipoService.listarTodos();
-    }
+  @GET
+  public List<Tipo> listar() {
+    return tipoService.listarTodos();
+  }
     
-    @GET
-    @Path("/{id}")
-    public Response buscar(@PathParam("id") Long id) {
-        Tipo tipo = tipoService.buscarPorId(id);
-        if (tipo == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        return Response.ok(tipo).build();
+  @GET
+  @Path("/{id}")
+  public Response buscar(@PathParam("id") Long id) {
+    Tipo tipo = tipoService.buscarPorId(id);
+    if (tipo == null) {
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
+    return Response.ok(tipo).build();
+  }
     
-    @POST
-    public Response criar(Tipo tipo) {
-        Tipo tipoCriado = tipoService.criar(tipo);
-        return Response.status(Response.Status.CREATED).entity(tipoCriado).build();
-    }
+  @POST
+  public Response criar(Tipo tipo) {
+    Tipo tipoCriado = tipoService.criar(tipo);
+    return Response.status(Response.Status.CREATED).entity(tipoCriado).build();
+  }
     
-    @PUT
-    @Path("/{id}")
-    public Response atualizar(@PathParam("id") Long id, Tipo tipo) {
-        Tipo tipoAtualizado = tipoService.atualizar(id, tipo);
-        if (tipoAtualizado == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        return Response.ok(tipoAtualizado).build();
+  @PUT
+  @Path("/{id}")
+  public Response atualizar(@PathParam("id") Long id, Tipo tipo) {
+    Tipo tipoAtualizado = tipoService.atualizar(id, tipo);
+    if (tipoAtualizado == null) {
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
+    return Response.ok(tipoAtualizado).build();
+  }
     
-    @DELETE
-    @Path("/{id}")
-    public Response deletar(@PathParam("id") Long id) {
-        boolean deletado = tipoService.deletar(id);
-        if (!deletado) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        return Response.noContent().build();
+  @DELETE
+  @Path("/{id}")
+  public Response deletar(@PathParam("id") Long id) {
+    boolean deletado = tipoService.deletar(id);
+    if (!deletado) {
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
+    return Response.noContent().build();
+  }
 }

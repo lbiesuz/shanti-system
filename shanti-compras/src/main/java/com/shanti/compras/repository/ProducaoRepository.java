@@ -8,11 +8,11 @@ import java.util.List;
 @ApplicationScoped
 public class ProducaoRepository implements PanacheRepository<Producao> {
     
-    public List<Producao> findByProduto(Long idProduto) {
-        return list("idProduto", idProduto);
-    }
+  public List<Producao> findByProduto(Long idProduto) {
+    return list("idProduto", idProduto);
+  }
     
-    public List<Producao> findByLote(String lote) {
-        return list("lote", lote);
-    }
+  public List<Producao> findByLote(String lote) {
+    return list("lote", lote);
+  }
 }

@@ -9,11 +9,11 @@ import java.util.List;
 @ApplicationScoped
 public class CompraRepository implements PanacheRepository<Compra> {
     
-    public List<Compra> findByFornecedor(Long fornecedorId) {
-        return list("fornecedor.id", fornecedorId);
-    }
+  public List<Compra> findByFornecedor(Long fornecedorId) {
+    return list("fornecedor.id", fornecedorId);
+  }
     
-    public List<Compra> findByPeriodo(LocalDate inicio, LocalDate fim) {
-        return list("dataCompra BETWEEN ?1 AND ?2", inicio, fim);
-    }
+  public List<Compra> findByPeriodo(LocalDate inicio, LocalDate fim) {
+    return list("dataCompra BETWEEN ?1 AND ?2", inicio, fim);
+  }
 }

@@ -8,11 +8,11 @@ import java.util.List;
 @ApplicationScoped
 public class InsumoRepository implements PanacheRepository<Insumo> {
     
-    public List<Insumo> findByTipo(Long tipoId) {
-        return list("tipo.id", tipoId);
-    }
+  public List<Insumo> findByTipo(Long tipoId) {
+    return list("tipo.id", tipoId);
+  }
     
-    public List<Insumo> findEstoqueBaixo(Integer quantidade) {
-        return list("estoqueInsumo < ?1", quantidade);
-    }
+  public List<Insumo> findEstoqueBaixo(Integer quantidade) {
+    return list("estoqueInsumo < ?1", quantidade);
+  }
 }

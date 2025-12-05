@@ -13,43 +13,43 @@ import java.util.List;
 @Consumes(MediaType.APPLICATION_JSON)
 public class CompraResource {
     
-    @Inject
-    CompraService compraService;
+  @Inject
+  CompraService compraService;
     
-    @GET
-    public List<Compra> listar() {
-        return compraService.listarTodas();
-    }
+  @GET
+  public List<Compra> listar() {
+    return compraService.listarTodas();
+  }
     
-    @GET
-    @Path("/{id}")
-    public Response buscar(@PathParam("id") Long id) {
-        Compra compra = compraService.buscarPorId(id);
-        if (compra == null) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        return Response.ok(compra).build();
+  @GET
+  @Path("/{id}")
+  public Response buscar(@PathParam("id") Long id) {
+    Compra compra = compraService.buscarPorId(id);
+    if (compra == null) {
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
+    return Response.ok(compra).build();
+  }
     
-    @GET
-    @Path("/fornecedor/{fornecedorId}")
-    public List<Compra> listarPorFornecedor(@PathParam("fornecedorId") Long fornecedorId) {
-        return compraService.listarPorFornecedor(fornecedorId);
-    }
+  @GET
+  @Path("/fornecedor/{fornecedorId}")
+  public List<Compra> listarPorFornecedor(@PathParam("fornecedorId") Long fornecedorId) {
+    return compraService.listarPorFornecedor(fornecedorId);
+  }
     
-    @POST
-    public Response criar(Compra compra) {
-        Compra compraCriada = compraService.criar(compra);
-        return Response.status(Response.Status.CREATED).entity(compraCriada).build();
-    }
+  @POST
+  public Response criar(Compra compra) {
+    Compra compraCriada = compraService.criar(compra);
+    return Response.status(Response.Status.CREATED).entity(compraCriada).build();
+  }
     
-    @DELETE
-    @Path("/{id}")
-    public Response deletar(@PathParam("id") Long id) {
-        boolean deletado = compraService.deletar(id);
-        if (!deletado) {
-            return Response.status(Response.Status.NOT_FOUND).build();
-        }
-        return Response.noContent().build();
+  @DELETE
+  @Path("/{id}")
+  public Response deletar(@PathParam("id") Long id) {
+    boolean deletado = compraService.deletar(id);
+    if (!deletado) {
+        return Response.status(Response.Status.NOT_FOUND).build();
     }
+    return Response.noContent().build();
+  }
 }
